@@ -30,30 +30,33 @@ client.connect(err => {
     const productCollection = client.db("honeyBee").collection("products");
 
 
-    app.post('/addProducts', (req, res) => {
-        const file = req.files.file;
-        const name = req.body.name;
-        const price = req.body.price;
-        const newImg = file.data;
-        const encImg = newImg.toString('base64');
-        // file.mv(`${__dirname}/product/${file.name}`, err => {
-        //     if (err) {
-        //         console.log(err)
-        //         return res.status(500).send({ msg: 'Failed to upload Image' });
-        //     }
-        //     return res.send({ name: file.name, path: `${file.name}` })
+//     app.post('/addProducts', (req, res) => {
+//         const file = req.files.file;
+//         const name = req.body.name;
+//         const price = req.body.price;
+//         const newImg = file.data;
+//         const encImg = newImg.toString('base64');
+//         file.mv(`${__dirname}/product/${file.name}`, err => {
+//             if (err) {
+//                 console.log(err)
+//                 return res.status(500).send({ msg: 'Failed to upload Image' });
+//             }
+//             return res.send({ name: file.name, path: `${file.name}` })
     
 
-    var image = {
-        contentType: file.mimetype,
-        size: file.size,
-        img: Buffer.from(encImg, 'base64')
-    };
-productCollection.insertOne({ name, price, image })
-    .then(result => {
-        res.send(result.insertedCount > 0);
-    })
-})
+//     var image = {
+//         contentType: file.mimetype,
+//         size: file.size,
+//         img: Buffer.from(encImg, 'base64')
+//     };
+// productCollection.insertOne({ name, price, image })
+//     .then(result => {
+//         res.send(result.insertedCount > 0);
+//     })
+// })
+// app.post('/addProduct', (req, res) => {
+//     const newProduct = req.body;
+// })
 
 
 app.get('/products', (req, res) => {
